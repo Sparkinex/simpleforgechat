@@ -1,4 +1,6 @@
 # Simple Forge Chat
+![example](img/chat_format_demo.png)
+
 Simple Forge Chat is a simple server side chat formatting mod for LuckPerms.
 
 **This mod requires LuckPerms to be installed: [LuckPerms](https://luckperms.net/download)**

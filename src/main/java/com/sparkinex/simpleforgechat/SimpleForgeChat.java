@@ -64,7 +64,7 @@ public class SimpleForgeChat {
         messageParts.put("{suffix}", metaSuffix == null ? null : metaSuffix.trim());
         messageParts.put("{message}", e.getMessage().getString());
 
-        String newMessage = createFormattedMessage(messageParts);
+        String newMessage = Toolkit.createFormattedMessage(Config.chatFormat, messageParts);
 
         Component fullMessage = Component.literal(Toolkit.translateColorCodes(newMessage));
         e.setCanceled(true);
@@ -72,24 +72,6 @@ public class SimpleForgeChat {
         player.server.execute(() -> {
             Toolkit.broadcastMessage(player.level.getServer(), fullMessage);
         });
-    }
-
-    private @Nullable String createFormattedMessage(Map<String, String> messageParts) {
-        String newMessage = Config.chatFormat;
-        for (Map.Entry<String, String> entry : messageParts.entrySet()) {
-            String placeholder = entry.getKey();
-            String value = entry.getValue();
-
-            // Remove unnecessary space if value is null or an empty string
-            if (value == null || value.length() == 0) {
-                newMessage = newMessage.replace(" " + placeholder, "").replace(placeholder + " ", "");
-                newMessage = newMessage.replace(placeholder, "");
-            } else {
-                newMessage = newMessage.replace(placeholder, value);
-            }
-        }
-
-        return newMessage;
     }
 
     private @Nullable CachedMetaData getLuckPermsUserMetaData(UUID playerId) {

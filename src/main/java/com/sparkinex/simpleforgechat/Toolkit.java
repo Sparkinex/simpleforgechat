@@ -4,7 +4,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -34,5 +36,24 @@ public class Toolkit {
         hexMatcher.appendTail(sb);
 
         return sb.toString().replace("&", "\u00A7");
+    }
+
+    public static @Nullable String createFormattedMessage(String format, Map<String, String> messageParts) {
+        String newMessage = format;
+        for (Map.Entry<String, String> entry : messageParts.entrySet()) {
+            String placeholder = entry.getKey();
+            String value = entry.getValue();
+
+            if (value == null || value.length() == 0) {
+                newMessage = newMessage
+                        .replace(" " + placeholder, "")
+                        .replace(placeholder + " ", "")
+                        .replace(placeholder, "");
+            } else {
+                newMessage = newMessage.replace(placeholder, value);
+            }
+        }
+
+        return newMessage;
     }
 }
