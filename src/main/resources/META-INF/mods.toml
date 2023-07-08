@@ -1,0 +1,30 @@
+modLoader="javafml"
+loaderVersion="[43,)"
+license="MIT"
+issueTrackerURL="https://github.com/Sparkinex/simpleforgechat/issues"
+[[mods]]
+    modId="simpleforgechat"
+    version="${file.jarVersion}"
+    displayName="Simple Forge Chat"
+    authors="Sparkinex"
+    description='''
+    Simple Forge Chat is a simple server side chat formatting mod for LuckPerms.
+    '''
+[[dependencies.simpleforgechat]]
+    modId="luckperms"
+    mandatory=true
+    versionRange="[5.4,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.simpleforgechat]]
+    modId="forge"
+    mandatory=true
+    versionRange="[43,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.simpleforgechat]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.19.2,1.20)"
+    ordering="NONE"
+    side="BOTH"
