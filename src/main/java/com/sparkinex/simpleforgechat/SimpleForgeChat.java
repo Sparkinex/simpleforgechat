@@ -70,7 +70,7 @@ public class SimpleForgeChat {
         e.setCanceled(true);
 
         player.server.execute(() -> {
-            Toolkit.broadcastMessage(player.level.getServer(), fullMessage);
+            Toolkit.broadcastMessage(player.level().getServer(), fullMessage);
         });
     }
 
